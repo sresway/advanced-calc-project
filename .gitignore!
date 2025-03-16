@@ -1,0 +1,10 @@
+## Prevent unnecessary tracking.
+
+venv/
+*.pyc
+*.pyo
+*.sw*
+.coverage
+.pytest_cache
+*__pycache__
+.env
