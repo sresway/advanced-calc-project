@@ -1,31 +1,30 @@
+"""History Management for Calculator"""
+
 import pandas as pd
-import os
 
-class CalculationHistory:
-    """Manages calculation history using Pandas."""
-    HISTORY_FILE = "history.csv"
+class HistoryManager:
+    """Manages calculation history using Pandas"""
 
-    def __init__(self):
-        """Initialize history storage."""
-        if not os.path.exists(self.HISTORY_FILE):
-            self._initialize_history()
+    def __init__(self, history_file="history.csv"):
+        self.history_file = history_file
+        try:
+            self.history = pd.read_csv(self.history_file)
+        except FileNotFoundError:
+            self.history = pd.DataFrame(columns=["Operation", "Result"])
 
-    def _initialize_history(self):
-        """Create a new history file with a header."""
-        df = pd.DataFrame(columns=["num1", "num2", "operation", "result"])
-        df.to_csv(self.HISTORY_FILE, index=False)
-
-    def add_entry(self, num1, num2, operation, result):
-        """Add a new calculation to history."""
-        df = pd.read_csv(self.HISTORY_FILE)
-        new_entry = pd.DataFrame([[num1, num2, operation, result]], columns=df.columns)
-        df = pd.concat([df, new_entry], ignore_index=True)
-        df.to_csv(self.HISTORY_FILE, index=False)
+    def save_entry(self, operation, result):
+        """Save a calculation to history"""
+        new_entry = pd.DataFrame([{"Operation": operation, "Result": result}])
+        self.history = pd.concat([self.history, new_entry], ignore_index=True)
+        self.history.to_csv(self.history_file, index=False)
 
     def load_history(self):
-        """Load calculation history."""
-        return pd.read_csv(self.HISTORY_FILE)
+        """Return all saved calculations as a DataFrame"""
+        if self.history.empty:
+            return pd.DataFrame(columns=["Operation", "Result"])
+        return self.history
 
     def clear_history(self):
-        """Clear all history records."""
-        self._initialize_history()
+        """Clear all calculation history"""
+        self.history = pd.DataFrame(columns=["Operation", "Result"])
+        self.history.to_csv(self.history_file, index=False)

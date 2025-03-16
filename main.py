@@ -6,6 +6,7 @@ import logging
 from dotenv import load_dotenv
 from app.app import CalculatorApp
 
+
 # Load environment variables
 load_dotenv()
 
@@ -33,7 +34,7 @@ def main():
     if len(sys.argv) > 1:
         command = " ".join(sys.argv[1:])
         print(calc.run_command(command))
-        sys.exit(0)  # ✅ Exit cleanly after command execution
+        sys.exit(0)  # Exit cleanly after command execution
 
     while True:
         try:

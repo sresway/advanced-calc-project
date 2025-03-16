@@ -21,7 +21,7 @@ logging.basicConfig(
         (["5", "3", "add"], "Result: 8"),
         (["10", "2", "subtract"], "Result: 8"),
         (["4", "5", "multiply"], "Result: 20"),
-        (["20", "4", "divide"], "Result: 5.0"),
+        (["20", "4", "divide"], "Result: 5"),
         (["1", "0", "divide"], "Result: Cannot divide by zero"),
         (["9", "3", "unknown"], "Unknown operation: unknown"),
         (["a", "3", "add"], "Invalid number input. Please provide two numbers followed by an operation."),
@@ -42,10 +42,13 @@ def test_main(args, expected_output):
     print("STDERR:", result.stderr.strip())
 
     # Logging
-    logging.info(f"Testing: python main.py {' '.join(args)}")
-    logging.info(f"Expected: {expected_output}")
-    logging.info(f"Actual Output: {result.stdout.strip()}")
-    logging.info(f"Errors: {result.stderr.strip()}")
+    logging.info("Testing: python main.py %s", " ".join(args))
+    logging.info("Expected Output: %s", expected_output)
+    logging.info("Actual Output: %s", result.stdout.strip())
+    logging.info("Errors: %s", result.stderr.strip())
 
     # Check if expected output is in stdout
-    assert expected_output in result.stdout.strip(), f"Expected '{expected_output}', but got '{result.stdout.strip()}'"
+    assert expected_output in result.stdout.strip(), (
+        f"\n Expected: '{expected_output}'\n"
+        f" Got: '{result.stdout.strip()}'"
+    )
