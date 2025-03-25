@@ -41,3 +41,11 @@
 2025-03-05 21:40:27,300 - ERROR - Invalid number input: Ensure both inputs are valid numbers.
 2025-03-05 21:40:27,422 - DEBUG - Logging system initialized.
 2025-03-05 21:40:27,423 - ERROR - Invalid number input: Ensure both inputs are valid numbers.
+2025-03-25 16:30:42,456 - ERROR - Unhandled exception: 'HistoryManager' object has no attribute 'save_to_history'
+2025-03-25 16:30:56,435 - ERROR - Unhandled exception: 'HistoryManager' object has no attribute 'save_to_history'
+2025-03-25 16:37:51,761 - ERROR - Unhandled exception: 'HistoryManager' object is not callable
+2025-03-25 16:40:48,749 - ERROR - Unhandled exception: 'HistoryManager' object is not callable
+2025-03-25 16:41:01,694 - ERROR - Unhandled exception: 'HistoryManager' object is not callable
+2025-03-25 16:41:49,545 - ERROR - Unhandled exception: 'HistoryManager' object is not callable
+2025-03-25 17:08:21,685 - ERROR - Unhandled exception: 'HistoryManager' object is not callable
+2025-03-25 17:17:33,564 - ERROR - Unhandled exception: 'HistoryManager' object is not callable

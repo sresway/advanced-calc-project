@@ -10,7 +10,10 @@ class HistoryManager:
         try:
             self.history = pd.read_csv(self.history_file)
         except FileNotFoundError:
-            self.history = pd.DataFrame(columns=["Operation", "Result"])
+            self.history = pd.DataFrame({
+                "Operation": pd.Series(dtype="str"),
+                "Result": pd.Series(dtype="float")
+            })
 
     def save_entry(self, operation, result):
         """Save a calculation to history"""
@@ -21,10 +24,16 @@ class HistoryManager:
     def load_history(self):
         """Return all saved calculations as a DataFrame"""
         if self.history.empty:
-            return pd.DataFrame(columns=["Operation", "Result"])
+            return pd.DataFrame({
+                "Operation": pd.Series(dtype="str"),
+                "Result": pd.Series(dtype="float")
+            })
         return self.history
 
     def clear_history(self):
         """Clear all calculation history"""
-        self.history = pd.DataFrame(columns=["Operation", "Result"])
+        self.history = pd.DataFrame({
+            "Operation": pd.Series(dtype="str"),
+            "Result": pd.Series(dtype="float")
+        })
         self.history.to_csv(self.history_file, index=False)
