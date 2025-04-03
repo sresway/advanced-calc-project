@@ -24,3 +24,7 @@ I used EAFP (Easier to Ask for Forgiveness than Permission) in many places.
     - Rather than checking if inputs are valid ahead of time, the app tries to convert values to float and catches ValueError if something goes wrong.
     - There's also a specific ZeroDivisionError block to gracefully catch division by zero attempts.
         - This logic is all in CalculatorApp.run_command() in app/app.py.
+
+## QR Code to My GitHub
+
+![QR Code](qr_codes/github_qr.png)
