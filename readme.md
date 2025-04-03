@@ -27,4 +27,7 @@ I used EAFP (Easier to Ask for Forgiveness than Permission) in many places.
 
 ## QR Code to My GitHub
 
-![QR Code](qr_codes/github_qr.png)
+![QR Code][def]
+
+
+[def]: qr_codes/my_github_qr.png
